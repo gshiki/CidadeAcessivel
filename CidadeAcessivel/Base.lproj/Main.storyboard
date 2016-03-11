@@ -15,11 +15,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VWR-Rw-hYF">
-                                <rect key="frame" x="198" y="155" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -27,23 +27,25 @@
                             <constraint firstItem="VWR-Rw-hYF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="4Dt-fn-Y7T"/>
                             <constraint firstItem="VWR-Rw-hYF" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="QEa-MI-Qr2"/>
                             <constraint firstItem="VWR-Rw-hYF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ZC3-PI-aTh"/>
-                            <constraint firstItem="VWR-Rw-hYF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="dWo-Yf-0ef"/>
+                            <constraint firstItem="VWR-Rw-hYF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="dWo-Yf-0ef"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cidade Acessível" id="Gmq-B0-ykw"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="mapviewMain" destination="VWR-Rw-hYF" id="3XK-bB-AT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="985" y="953"/>
+            <point key="canvasLocation" x="640" y="953"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BmG-Tx-tnb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hAC-jd-jjk" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xkc-ii-JF5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
