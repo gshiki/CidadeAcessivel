@@ -14,7 +14,7 @@ import MapKit
 class ViewController: UIViewController {
 
 
-    // COSNTANTES
+    // CONSTANTES
     let mapPropertyLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
     let mapPropertyRegionRadius: CLLocationDistance = 1000
     // OUTLETS
