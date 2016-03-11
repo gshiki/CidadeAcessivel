@@ -14,8 +14,11 @@ Teste pelo xcode
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class ViewController: UIViewController {
+
+
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
 
     // CONSTANTES
@@ -24,10 +27,25 @@ class ViewController: UIViewController {
     // OUTLETS
     @IBOutlet weak var mapviewMain: MKMapView!
     
+    // ANDRE - Criando o locationManager para buscar a localização do usuário
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        centerMapOnLocation(mapPropertyLocation)
+        // ANDRE - Atribuindo o delegate
+        self.locationManager.delegate = self
+        // ANDRE - Precisão da localização
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        // ANDRE - Requisitando a permissão do usuário
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        self.locationManager.startUpdatingLocation()
+        self.mapviewMain.showsUserLocation = true
+        
+        
+        
+        //centerMapOnLocation(mapPropertyLocation)
         
         initializeMapMarkers()
     }
@@ -72,6 +90,43 @@ class ViewController: UIViewController {
         
         mapviewMain.setRegion(centerRegion, animated: true)
     }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        
+        let zoom = 0.01 // quanto menor mais detalhado e restrito
+        
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom))
+        
+        self.mapviewMain.setRegion(region, animated: true)
+        
+        
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Erro: " + error.localizedDescription)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
 
