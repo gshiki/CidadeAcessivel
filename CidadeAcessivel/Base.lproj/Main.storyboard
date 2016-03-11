@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hAC-jd-jjk">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cidade Acessível-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Cidade Acessível" id="BYZ-38-t0r" customClass="ViewController" customModule="CidadeAcessivel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VWR-Rw-hYF">
+                                <rect key="frame" x="198" y="155" width="240" height="128"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VWR-Rw-hYF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="4Dt-fn-Y7T"/>
+                            <constraint firstItem="VWR-Rw-hYF" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="QEa-MI-Qr2"/>
+                            <constraint firstItem="VWR-Rw-hYF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ZC3-PI-aTh"/>
+                            <constraint firstItem="VWR-Rw-hYF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="dWo-Yf-0ef"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Cidade Acessível" id="Gmq-B0-ykw"/>
+                    <connections>
+                        <outlet property="mapviewMain" destination="VWR-Rw-hYF" id="3XK-bB-AT9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985" y="953"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BmG-Tx-tnb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hAC-jd-jjk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xkc-ii-JF5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="lRL-ex-cLE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X3n-h7-aZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="242" y="953"/>
+        </scene>
+    </scenes>
+</document>
