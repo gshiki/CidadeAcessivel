@@ -1,7 +1,9 @@
 //
 //  MapviewController.swift
 //  CidadeAcessivel
-//
+//  **************************************************
+//   Controller responsavel pelo mapa
+//  **************************************************
 //  Created by Student on 3/11/16.
 //  Copyright © 2016 Student. All rights reserved.
 //
