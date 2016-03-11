@@ -13,7 +13,7 @@ import MapKit
 
 class ViewController: UIViewController {
 
-    /* TESTE ALTERACAO */
+    /* TESTE ALTERACAO PELO XCODE */
 
     // COSNTANTES
     let mapPropertyLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
