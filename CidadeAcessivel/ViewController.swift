@@ -99,6 +99,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom))
         
+        self.mapviewMain.accessibilityActivate()
+    
         self.mapviewMain.setRegion(region, animated: true)
         
         

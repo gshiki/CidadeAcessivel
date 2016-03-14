@@ -129,6 +129,7 @@
 				TargetAttributes = {
 					3FEC68851C933B5900A9C90B = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 5BBFQJ2G7L;
 					};
 				};
 			};
@@ -283,9 +284,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CidadeAcessivel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = br.unifor.hackatruck.CidadeAcessivel;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.unifor.hackatruck.CidadeAcessivel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -294,9 +296,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CidadeAcessivel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = br.unifor.hackatruck.CidadeAcessivel;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.unifor.hackatruck.CidadeAcessivel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -320,6 +323,7 @@
 				3FEC689D1C933B5900A9C90B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
