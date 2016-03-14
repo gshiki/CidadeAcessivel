@@ -101,9 +101,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         self.mapviewMain.setRegion(region, animated: true)
         
-        self.locationManager.stopUpdatingLocation()
         
-        // TODO: O mapa não acompanha o usuário
+        //Usar esse comando somente para parar atualizar a atualização automatica do mapa
+        //self.locationManager.stopUpdatingLocation()
+        
+    
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
