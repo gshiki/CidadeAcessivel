@@ -14,18 +14,19 @@ import MapKit
 extension ViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-            if annotation is MKUserLocation {
+            if !(annotation is MKUserLocation) {
                 return nil
             }
             
-            let reuseId = "pin"
-            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+            let reuseID = "pinGreen"
+        
+            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseID) as? MKPinAnnotationView
+        
             if pinView == nil {
-                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
                 pinView!.canShowCallout = true
                 pinView!.animatesDrop = true
                 pinView!.image = UIImage(named:"green-comment-icon")!
-                
             }
             else {
                 pinView!.annotation = annotation

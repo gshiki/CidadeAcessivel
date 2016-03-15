@@ -16,12 +16,16 @@ import UIKit
 import MapKit
 import CoreLocation
 
-
-
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // CONSTANTES
     let mapPropertyZoom = 0.02 // quanto menor mais detalhado e restrito
+    let mapPropertyAnimationDuration = 3.0 // em segundos
+    let mapPropertyAnimationDelay = 0.0
+    let mapPropertyAnimationSpring:CGFloat = 1.2 // velocidade de mudanca de frames no final
+    let mapPropertyAnimationInitialSpring:CGFloat = 1.2 // velocidade de mudanca de frames no inicio
+    
+    
     let mapPropertyRegionRadius: CLLocationDistance = 1000
     // ANDRE - Criando o locationManager para buscar a localização do usuário
     let locationManager = CLLocationManager()
@@ -58,7 +62,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     */
     
     
-    /*  ************************************************************
+    /*  
+    ************************************************************
     * Inicializa os marcadores de opnioes do mapa principal
     ************************************************************
     */
@@ -71,7 +76,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         mapviewMain.addAnnotation(opnionMarker)
     }
     
-    /*  ************************************************************
+    /*  
+    ************************************************************
     * Centraliza a visao inicial do mapa no ponto passado por parametro
     ************************************************************
     */
@@ -90,16 +96,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let location = locations.last
             let center = CLLocationCoordinate2D(
                 latitude: location!.coordinate.latitude,
-                longitude: location!.coordinate.longitude
-            )
+                longitude: location!.coordinate.longitude)
+            
             let region = MKCoordinateRegion(
                 center: center,
-                span: MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom)
-            )
+                span: MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom))
             
             self.mapviewMain.accessibilityActivate()
             
-            self.mapviewMain.setRegion(region, animated: true)
+            MKMapView.animateWithDuration(mapPropertyAnimationDuration,
+                delay: mapPropertyAnimationDelay,
+                usingSpringWithDamping: mapPropertyAnimationSpring,
+                initialSpringVelocity: mapPropertyAnimationInitialSpring,
+                options: UIViewAnimationOptions.CurveEaseIn,
+                animations: {
+                    self.mapviewMain.setRegion(region, animated: true)
+                }, completion: nil)
             
             mapFirstTimeLocating = false;
         }
