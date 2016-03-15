@@ -22,8 +22,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 
     // CONSTANTES
-    let mapPropertyLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
     let mapPropertyRegionRadius: CLLocationDistance = 1000
+    
     // OUTLETS
     @IBOutlet weak var mapviewMain: MKMapView!
     
