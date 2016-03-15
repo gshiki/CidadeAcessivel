@@ -20,7 +20,6 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
-    
     // CONSTANTES
     let mapPropertyZoom = 0.02 // quanto menor mais detalhado e restrito
     let mapPropertyRegionRadius: CLLocationDistance = 1000
