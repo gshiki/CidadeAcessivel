@@ -14,7 +14,7 @@ import MapKit
 extension ViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-            if annotation is MKUserLocation {
+            if !(annotation is MKUserLocation) {
                 return nil
             }
             
