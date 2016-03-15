@@ -24,6 +24,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let mapPropertyAnimationDelay = 0.0
     let mapPropertyAnimationSpring:CGFloat = 1.2 // velocidade de mudanca de frames no final
     let mapPropertyAnimationInitialSpring:CGFloat = 1.2 // velocidade de mudanca de frames no inicio
+    let pinPropertyWidth:CGFloat = 28
+    let pinPropertyHeight:CGFloat = 28
     
     
     let mapPropertyRegionRadius: CLLocationDistance = 1000

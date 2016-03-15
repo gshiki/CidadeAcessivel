@@ -16,20 +16,18 @@ extension ViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        let reuseID = "pinGreen"
         let detailButton: UIButton = UIButton(type: UIButtonType.DetailDisclosure)
         
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseID) as? MKPinAnnotationView
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier("pinGreen")
         
         if annotation is MKUserLocation {
             return nil
         }
     
         if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pinGreen")
             pinView!.canShowCallout = true
-            pinView!.animatesDrop = true
-            pinView!.image = UIImage(named: "green-comment-icon")
+            pinView!.image = iconizeImage( UIImage(named: "green-comment-icon")! )
             pinView!.rightCalloutAccessoryView = detailButton
         }
         else {
@@ -37,5 +35,17 @@ extension ViewController: MKMapViewDelegate {
         }
         
         return pinView
+    }
+    
+    func iconizeImage(image: UIImage) -> UIImage {
+        UIGraphicsBeginImageContext( CGSizeMake(pinPropertyWidth, pinPropertyHeight) )
+        
+        image.drawInRect( CGRectMake(0, 0, pinPropertyWidth, pinPropertyHeight) )
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }
