@@ -50,7 +50,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         // INICIALIZA O MAPA
         self.mapviewMain.delegate = self
-        self.mapviewMain.showsUserLocation = true
+        //self.mapviewMain.showsUserLocation = true
         
         initializeMapMarkers()
     }

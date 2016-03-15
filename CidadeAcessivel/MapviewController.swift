@@ -9,29 +9,33 @@
 //
 
 import Foundation
+import UIKit
 import MapKit
 
 extension ViewController: MKMapViewDelegate {
     
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-            if !(annotation is MKUserLocation) {
-                return nil
-            }
-            
-            let reuseID = "pinGreen"
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseID) as? MKPinAnnotationView
+        let reuseID = "pinGreen"
+        let detailButton: UIButton = UIButton(type: UIButtonType.DetailDisclosure)
         
-            if pinView == nil {
-                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
-                pinView!.canShowCallout = true
-                pinView!.animatesDrop = true
-                pinView!.image = UIImage(named:"green-comment-icon")!
-            }
-            else {
-                pinView!.annotation = annotation
-            }
-            
-            return pinView
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseID) as? MKPinAnnotationView
+        
+        if annotation is MKUserLocation {
+            return nil
+        }
+    
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+            pinView!.canShowCallout = true
+            pinView!.animatesDrop = true
+            pinView!.image = UIImage(named: "green-comment-icon")
+            pinView!.rightCalloutAccessoryView = detailButton
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
     }
 }
