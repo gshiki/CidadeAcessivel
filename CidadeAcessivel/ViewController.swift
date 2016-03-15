@@ -87,12 +87,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if (mapFirstTimeLocating) {
-            let location = locations.last
-            let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-            
             let zoom = mapPropertyZoom
-            
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom))
+            let location = locations.last
+            let center = CLLocationCoordinate2D(
+                latitude: location!.coordinate.latitude,
+                longitude: location!.coordinate.longitude
+            )
+            let region = MKCoordinateRegion(
+                center: center,
+                span: MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom)
+            )
             
             self.mapviewMain.accessibilityActivate()
             
