@@ -19,16 +19,19 @@ import CoreLocation
 
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-
-
+    
+    
     // CONSTANTES
+    let mapPropertyZoom = 0.02 // quanto menor mais detalhado e restrito
     let mapPropertyRegionRadius: CLLocationDistance = 1000
+    // ANDRE - Criando o locationManager para buscar a localização do usuário
+    let locationManager = CLLocationManager()
+    
+    // VARIAVEIS
+    var mapFirstTimeLocating = true;
     
     // OUTLETS
     @IBOutlet weak var mapviewMain: MKMapView!
-    
-    // ANDRE - Criando o locationManager para buscar a localização do usuário
-    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,46 +44,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.requestWhenInUseAuthorization()
         
         self.locationManager.startUpdatingLocation()
+        
+        // INICIALIZA O MAPA
+        self.mapviewMain.delegate = self
         self.mapviewMain.showsUserLocation = true
-        
-        
-        
-        //centerMapOnLocation(mapPropertyLocation)
         
         initializeMapMarkers()
     }
-
+    
     /*
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    super.didReceiveMemoryWarning()
     }
     */
     
+    
     /*  ************************************************************
-    * Inicializa o mapa e suas propriedades
+    * Inicializa os marcadores de opnioes do mapa principal
     ************************************************************
-    */
-    func initializeMap() {
-        mapviewMain.showsUserLocation = true
-        mapviewMain.delegate = self
-    }
-    
-    /*  ************************************************************
-        * Inicializa os marcadores de opnioes do mapa principal
-        ************************************************************
     */
     func initializeMapMarkers() {
         let opnionMarker = OpnionMarker(
             title: "Algum Título",
             locationName: "Alguma Localização",
-            coordinate: CLLocationCoordinate2D(latitude: 21.282778, longitude: -157.829444)
+            coordinate: CLLocationCoordinate2D(latitude: -3.769182, longitude: -38.483889)
         )
         mapviewMain.addAnnotation(opnionMarker)
     }
     
     /*  ************************************************************
-        * Centraliza a visao inicial do mapa no ponto passado por parametro
-        ************************************************************
+    * Centraliza a visao inicial do mapa no ponto passado por parametro
+    ************************************************************
     */
     func centerMapOnLocation(location: CLLocation) {
         let centerRegion = MKCoordinateRegionMakeWithDistance(
@@ -92,46 +86,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        
-        let zoom = 0.01 // quanto menor mais detalhado e restrito
-        
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom))
-        
-        self.mapviewMain.accessibilityActivate()
-    
-        self.mapviewMain.setRegion(region, animated: true)
-        
-        
-        //Usar esse comando somente para parar atualizar a atualização automatica do mapa
-        //self.locationManager.stopUpdatingLocation()
-        
-    
+        if (mapFirstTimeLocating) {
+            let zoom = mapPropertyZoom
+            let location = locations.last
+            let center = CLLocationCoordinate2D(
+                latitude: location!.coordinate.latitude,
+                longitude: location!.coordinate.longitude
+            )
+            let region = MKCoordinateRegion(
+                center: center,
+                span: MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom)
+            )
+            
+            self.mapviewMain.accessibilityActivate()
+            
+            self.mapviewMain.setRegion(region, animated: true)
+            
+            mapFirstTimeLocating = false;
+        }
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Erro: " + error.localizedDescription)
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 }
-
