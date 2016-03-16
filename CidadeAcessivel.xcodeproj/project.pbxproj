@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FD5E8541C99EC020066F39D /* addLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5E8531C99EC020066F39D /* addLocalViewController.swift */; };
 		3FEC688A1C933B5900A9C90B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC68891C933B5900A9C90B /* AppDelegate.swift */; };
 		3FEC688C1C933B5900A9C90B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC688B1C933B5900A9C90B /* ViewController.swift */; };
 		3FEC688F1C933B5900A9C90B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC688D1C933B5900A9C90B /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3FD5E8531C99EC020066F39D /* addLocalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addLocalViewController.swift; sourceTree = "<group>"; };
 		3FEC68861C933B5900A9C90B /* CidadeAcessivel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CidadeAcessivel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FEC68891C933B5900A9C90B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FEC688B1C933B5900A9C90B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		3FEC68A01C933B7500A9C90B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3FD5E8531C99EC020066F39D /* addLocalViewController.swift */,
 				3FEC688B1C933B5900A9C90B /* ViewController.swift */,
 				3FEC68A61C93470800A9C90B /* MapviewController.swift */,
 			);
@@ -129,7 +132,7 @@
 				TargetAttributes = {
 					3FEC68851C933B5900A9C90B = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 5BBFQJ2G7L;
+						DevelopmentTeam = TM2QSAWLP8;
 					};
 				};
 			};
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FD5E8541C99EC020066F39D /* addLocalViewController.swift in Sources */,
 				3FEC688C1C933B5900A9C90B /* ViewController.swift in Sources */,
 				3FEC688A1C933B5900A9C90B /* AppDelegate.swift in Sources */,
 				3FEC68A51C9341B900A9C90B /* OpnionMarker.swift in Sources */,
@@ -285,10 +289,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CidadeAcessivel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.unifor.hackatruck.CidadeAcessivel;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.unifor.hackatruck.CidadeAcessivel2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -297,10 +303,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CidadeAcessivel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.unifor.hackatruck.CidadeAcessivel;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.unifor.hackatruck.CidadeAcessivel2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

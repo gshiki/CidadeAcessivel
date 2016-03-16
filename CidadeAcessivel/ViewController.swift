@@ -33,13 +33,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     
     // VARIAVEIS
-    var mapFirstTimeLocating = true;
+    var mapFirstTimeLocating = true
+    var coordenadasNovoLocal: CLLocationCoordinate2D?
     
     // OUTLETS
     @IBOutlet weak var mapviewMain: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: "addLocal:")
+        longPressGR.minimumPressDuration = 2.0
+        self.mapviewMain.addGestureRecognizer(longPressGR)
         
         // ANDRE - Atribuindo o delegate
         self.locationManager.delegate = self
@@ -64,7 +69,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     */
     
     
-    /*  
+    /*
+    ************************************************************
+    * ANDRE - Adiciona um local apos um Long Press
+    ************************************************************
+    */
+    func addLocal(GR:UIGestureRecognizer) {
+        print("GR")
+        if (GR.state == UIGestureRecognizerState.Began){
+            // local do ponto que foi tocado
+            let touchPoint = GR.locationInView(self.mapviewMain)
+            // convertendo o ponto em coordenadas
+            self.coordenadasNovoLocal = self.mapviewMain.convertPoint(touchPoint, toCoordinateFromView: self.mapviewMain)
+            print("TAP!!")
+            performSegueWithIdentifier("criaLocal", sender: nil)
+            
+            
+        }
+        
+    }
+    
+    /*
     ************************************************************
     * Inicializa os marcadores de opnioes do mapa principal
     ************************************************************
@@ -121,6 +146,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Erro: " + error.localizedDescription)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "criaLocal" {
+            if let addLocalViewController = segue.destinationViewController as? addLocalViewController {
+                addLocalViewController.coordenadasNovoLocal = self.coordenadasNovoLocal
+            }
+        }
     }
     
 }

@@ -34,11 +34,31 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="mapviewMain" destination="VWR-Rw-hYF" id="3XK-bB-AT9"/>
+                        <segue destination="sdy-SY-ojC" kind="show" identifier="criaLocal" id="0pm-Rd-pDM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="640" y="953"/>
+        </scene>
+        <!--Add Local View Controller-->
+        <scene sceneID="T3o-cc-TUC">
+            <objects>
+                <viewController id="sdy-SY-ojC" customClass="addLocalViewController" customModule="CidadeAcessivel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pjP-Hh-J7Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="Br4-Ss-nm1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZnP-kb-N4W">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Xc-ak-Igm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1004" y="953"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BmG-Tx-tnb">
