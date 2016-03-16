@@ -26,6 +26,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let mapPropertyAnimationInitialSpring:CGFloat = 1.2 // velocidade de mudanca de frames no inicio
     let pinPropertyWidth:CGFloat = 28
     let pinPropertyHeight:CGFloat = 28
+    let gesturePressTime = 0.5
     
     
     let mapPropertyRegionRadius: CLLocationDistance = 1000
@@ -43,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         let longPressGR = UILongPressGestureRecognizer(target: self, action: "addLocal:")
-        longPressGR.minimumPressDuration = 2.0
+        longPressGR.minimumPressDuration = gesturePressTime
         self.mapviewMain.addGestureRecognizer(longPressGR)
         
         // ANDRE - Atribuindo o delegate
@@ -75,16 +76,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     ************************************************************
     */
     func addLocal(GR:UIGestureRecognizer) {
-        print("GR")
-        if (GR.state == UIGestureRecognizerState.Began){
+        if (GR.state == UIGestureRecognizerState.Began) {
             // local do ponto que foi tocado
             let touchPoint = GR.locationInView(self.mapviewMain)
             // convertendo o ponto em coordenadas
             self.coordenadasNovoLocal = self.mapviewMain.convertPoint(touchPoint, toCoordinateFromView: self.mapviewMain)
-            print("TAP!!")
+            
             performSegueWithIdentifier("criaLocal", sender: nil)
-            
-            
         }
         
     }
@@ -145,7 +143,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Erro: " + error.localizedDescription)
+        //print("Erro: " + error.localizedDescription)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

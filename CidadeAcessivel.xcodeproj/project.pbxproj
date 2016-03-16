@@ -132,7 +132,7 @@
 				TargetAttributes = {
 					3FEC68851C933B5900A9C90B = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = TM2QSAWLP8;
+						DevelopmentTeam = GK2PA23C34;
 					};
 				};
 			};
@@ -292,7 +292,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CidadeAcessivel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.unifor.hackatruck.CidadeAcessivel2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.unifor.hackatruck.CidadeAcessivel2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -306,7 +306,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CidadeAcessivel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.unifor.hackatruck.CidadeAcessivel2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.unifor.hackatruck.CidadeAcessivel2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
