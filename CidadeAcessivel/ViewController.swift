@@ -15,6 +15,7 @@ Teste pelo xcode
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -35,7 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // VARIAVEIS
     var mapFirstTimeLocating = true
-    var coordenadasNovoLocal: CLLocationCoordinate2D?
+    var coordenadasOpniao: CLLocationCoordinate2D?
     
     // OUTLETS
     @IBOutlet weak var mapviewMain: MKMapView!
@@ -43,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let longPressGR = UILongPressGestureRecognizer(target: self, action: "addLocal:")
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: "registerOpnion:")
         longPressGR.minimumPressDuration = gesturePressTime
         self.mapviewMain.addGestureRecognizer(longPressGR)
         
@@ -63,6 +64,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         initializeMapMarkers()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        initializeMapMarkers()
+    }
+    
     /*
     override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -75,14 +80,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     * ANDRE - Adiciona um local apos um Long Press
     ************************************************************
     */
-    func addLocal(GR:UIGestureRecognizer) {
+    func registerOpnion(GR:UIGestureRecognizer) {
         if (GR.state == UIGestureRecognizerState.Began) {
             // local do ponto que foi tocado
             let touchPoint = GR.locationInView(self.mapviewMain)
             // convertendo o ponto em coordenadas
-            self.coordenadasNovoLocal = self.mapviewMain.convertPoint(touchPoint, toCoordinateFromView: self.mapviewMain)
+            self.coordenadasOpniao = self.mapviewMain.convertPoint(touchPoint, toCoordinateFromView: self.mapviewMain)
             
-            performSegueWithIdentifier("criaLocal", sender: nil)
+            performSegueWithIdentifier("registrarLocal", sender: nil)
         }
         
     }
@@ -93,12 +98,47 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     ************************************************************
     */
     func initializeMapMarkers() {
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "Locais")
+        
+        request.returnsObjectsAsFaults = false
+        
+        var resultsLocations: NSArray = []
+        
+        do {
+            resultsLocations = try context.executeFetchRequest(request)
+        } catch {
+            
+        }
+        
+        if resultsLocations.count > 0 {
+            for location: AnyObject in resultsLocations {
+                var localName:String = location.primitiveValueForKey("local") as! String
+                var localDescription:String = location.primitiveValueForKey("descricao") as! String
+                var latitude:CLLocationDegrees = location.valueForKey("latitude") as! CLLocationDegrees
+                var longitude:CLLocationDegrees = location.primitiveValueForKey("longitude") as! CLLocationDegrees
+                
+                var localMarker = LocalMarker(
+                    title: localName,
+                    locationName: localDescription,
+                    coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                )
+                mapviewMain.addAnnotation(localMarker)
+            }
+        } else {
+            print("Nenhum resultado encontrado. Verificar erro")
+        }
+        
+        /*
         let opnionMarker = OpnionMarker(
             title: "Algum Título",
             locationName: "Alguma Localização",
             coordinate: CLLocationCoordinate2D(latitude: -3.769182, longitude: -38.483889)
         )
         mapviewMain.addAnnotation(opnionMarker)
+        */
     }
     
     /*  
@@ -147,9 +187,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "criaLocal" {
-            if let addLocalViewController = segue.destinationViewController as? addLocalViewController {
-                addLocalViewController.coordenadasNovoLocal = self.coordenadasNovoLocal
+        let backButtonItem = UIBarButtonItem()
+        
+        backButtonItem.title = "Voltar"
+        
+        navigationItem.backBarButtonItem = backButtonItem
+        
+        if segue.identifier == "registrarLocal" {
+            
+            if let localRegisterController = segue.destinationViewController as? LocalRegisterController {
+                localRegisterController.coordenadasOpniao = self.coordenadasOpniao
             }
         }
     }

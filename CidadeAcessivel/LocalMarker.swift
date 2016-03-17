@@ -11,7 +11,7 @@
 import Foundation
 import MapKit
 
-class OpnionMarker: NSObject, MKAnnotation {
+class LocalMarker: NSObject, MKAnnotation {
     
     let title: String?
     let locationName: String

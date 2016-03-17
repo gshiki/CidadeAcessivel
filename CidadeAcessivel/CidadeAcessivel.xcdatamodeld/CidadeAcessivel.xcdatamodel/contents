@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15B42" minimumToolsVersion="Automatic">
     <entity name="Locais" syncable="YES">
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="local" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="localOpiniao" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Opinioes" inverseName="opiniaoLocal" inverseEntity="Opinioes" syncable="YES"/>
     </entity>
     <entity name="NE" syncable="YES">
         <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,7 +14,7 @@
     <entity name="Opinioes" syncable="YES">
         <attribute name="comentario" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nota" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="opiniaoLocal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Locais" inverseName="localOpiniao" inverseEntity="Locais" syncable="YES"/>
+        <relationship name="opiniaoLocal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Locais" syncable="YES"/>
         <relationship name="opiniaoNe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NE" syncable="YES"/>
         <relationship name="opiniaoUsuario" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Usuario" inverseName="usuarioOpiniao" inverseEntity="Usuario" syncable="YES"/>
     </entity>
@@ -26,9 +25,9 @@
         <relationship name="usuarioOpiniao" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Opinioes" inverseName="opiniaoUsuario" inverseEntity="Opinioes" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Locais" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="Opinioes" positionX="-54" positionY="18" width="128" height="120"/>
-        <element name="Usuario" positionX="-36" positionY="45" width="128" height="105"/>
-        <element name="NE" positionX="-27" positionY="54" width="128" height="90"/>
+        <element name="Locais" positionX="-477" positionY="-18" width="128" height="103"/>
+        <element name="NE" positionX="52" positionY="54" width="128" height="90"/>
+        <element name="Opinioes" positionX="-279" positionY="-36" width="128" height="118"/>
+        <element name="Usuario" positionX="-270" positionY="219" width="128" height="105"/>
     </elements>
 </model>
